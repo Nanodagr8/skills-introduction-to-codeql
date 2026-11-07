@@ -12,6 +12,7 @@ def index():
     read = bool(request.args.get('read'))
 
     if name:
+        # Parameterized SQL prevents untrusted input from altering query structure.
         cursor.execute(
             "SELECT * FROM books WHERE name LIKE %s", name
         )
